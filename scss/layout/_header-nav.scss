@@ -1,0 +1,239 @@
+header{
+  padding: 1rem 0;
+  .wrap{
+    display: flex;
+    align-items: center;
+  }
+  @include respond-to(550px) {
+    .logo {
+      width: 60%;
+      display: block;
+      img{
+        width: 100%;
+      }
+    }
+
+  }
+  .logo {
+    -webkit-flex: 1;
+    flex: 1;
+  }
+
+  .nav {
+    -webkit-flex: 2;
+    flex: 2;
+    display: none;
+    @include respond-to-min(998px) {
+      @include flex-only;
+      justify-content: flex-end;
+    }
+    &__wrap-list {
+      @include flex-only;
+      font-size: .85rem;
+      padding: 0;
+      position: relative;
+    }
+
+    &__list {
+      list-style: none;
+      margin: 0 20px 0 0;
+      & i {
+        vertical-align: middle;
+        font-size: 12px;
+      }
+      &--down > .sub-menu {
+        position: absolute;
+        background: rgba($color-sub-menu, .9);
+        min-width: 200px;
+        padding: 2rem 1rem 2.2rem;
+        border-radius: 20px 4px 20px 4px;
+        
+      }
+      &--down:hover .sub-menu {
+        display: block;
+      }
+      &--down > .sub-menu li {
+        display: block;
+        position: relative;
+        
+      }
+    }
+
+    &__item {
+      color: inherit;
+      img {
+        vertical-align: bottom;
+      }
+    }
+
+    &__btn {
+      @include btn-base;
+      padding: 0 .6rem;
+      background-color: $color-naranja;
+      border: none;
+      font-family: $font-r;
+      margin-left: 17px;
+      a {
+        color: #fff;
+        font-size: .83rem;
+      }
+    }
+
+    &__btn:hover {
+      background-color: lighten($color-naranja, 15%);
+    }
+
+  }
+
+}
+
+.sub-menu {
+  display: none;
+  z-index: 10;
+  &__list {
+    list-style: none;
+    padding: 8px 0 8px 20px ;
+    &:hover {
+      background-color: lighten($color-sub-menu, 3%,);
+      border-radius: 20px;
+    }
+  }
+  &__item {
+    display: block;
+    color: inherit;
+  }
+  &__item:hover {
+    color:$color-azul;
+  }
+}
+
+.info {
+  background-color: $color-azul;
+  height: 3rem;
+  @include respond-to-min(998px) {
+    height: 2.7rem;
+  }
+  &__content {
+    @include flex-only;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    padding: 0 1rem;
+    img {
+      width: 18px;
+      margin-right: 10px;
+      display: none;
+      @include respond-to-min(550px) {
+        display: block;
+      }
+    }
+    p {
+      margin: 0;
+      color: #fff;
+      font-size: .85rem;
+      letter-spacing: -1.2px;
+      text-align: center;
+      @include respond-to-min(550px) {
+        letter-spacing: -.9px;
+        font-size: .9rem;
+      }
+    }
+    a {
+      color: #fff;
+      font-weight: bold;
+    }
+  }
+
+}
+
+.mb-menu {
+  @include respond-to(998px) {
+    width: 40px;
+    height: 45px;
+    margin-left: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    transition: all 1s ease-in-out;
+
+  }
+
+  @include respond-to(998px) {
+    &__hamburger {
+      width: 80%;
+      height: 5px;
+      background-color: $color-gris;
+      border-radius: 5px;
+      transition: all .5s ease-in-out;
+      &::before,
+      &::after {
+        content: '';
+        position: absolute;
+        width: 80%;
+        height: 5px;
+        background-color: $color-gris;
+        border-radius: 5px;
+        transition: all .5s ease-in-out;
+      }
+      &::before {
+        transform: translateY(-10px);
+      }
+      &::after {
+        transform: translateY(10px);
+      }
+    }
+
+  }
+
+  &.activo &__hamburger {
+    transform: translateX(-20px);
+    background: transparent;
+    transition: all .5s ease-in-out;
+  }
+  &.activo &__hamburger::before {
+    transform: rotate(45deg) translate(17px, -17px);
+  }
+  &.activo &__hamburger::after {
+    transform: rotate(-45deg) translate(17px, 17px);
+  }
+
+  &.activo ~ .nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 12vh;
+    right: 0;
+    width: 100%;
+    height: 90vh;
+    background-color: white;
+    z-index: 10;
+  }
+  &.activo ~ .nav .nav__wrap-list {
+    flex-direction: column;
+    align-items: center;
+    transform: translateY(-20vh);
+    & .nav__list {
+      margin: 0;
+      padding: 1rem 0;
+    }
+    & .nav__item {
+      font-size: 1.3rem;
+    }
+
+  }
+  &.activo ~ .nav .nav__btn {
+    max-width: 300px;
+    margin: 0;
+    padding: 1rem 2rem;
+    transform: translateY(-15vh);
+    a {
+      font-size: 1rem;
+    }
+  }
+
+}
+

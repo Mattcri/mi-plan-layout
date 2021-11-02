@@ -1,0 +1,53 @@
+main {
+  padding: 4rem 0 2rem;
+  @include respond-to-min(998px) {
+    padding: 7rem 0 4rem;
+  }
+}
+
+
+.planes {
+  align-items: center;
+  &--reverse {
+    @include respond-to-min(998px) {
+      flex-direction: row-reverse;
+    }
+  }
+  &__img {
+    img {
+      object-fit: cover;
+      width: 100%;
+    }
+  }
+
+  &__content {
+    padding: 2rem 2.5rem;
+  }
+  &__wrap-list {
+    padding: 0;
+    margin: 1.8rem 0;
+  }
+  &__list {
+    list-style: none;
+    background: url("../images/check-xs.svg") left top no-repeat;
+    padding: 0 30px 8px 0;
+    padding-left: 30px;
+  }
+
+  &__link {
+    color: $color-celeste;
+    position: relative;
+    font-family: $font-b;
+    &--celeste::after {
+      content: "";
+      background: url("../images/arrow-celeste.svg") no-repeat;
+      position: absolute;
+      transform: rotate(270deg);
+      width: 25px;
+      height: 20px;
+      top: -2px;
+      right: -40px;
+    }
+  }
+
+}

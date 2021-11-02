@@ -1,0 +1,24 @@
+.footer {
+  background-color: $color-azul;
+  padding: 2.4rem 0;
+  &__content {
+    width: 100%;
+    text-align: center;
+  }
+  &__link {
+    color: #fff;
+    text-decoration: underline;
+    position: relative;
+    font-size: 1.2rem;
+    &::before {
+      content: "";
+      background: url("../images/ic-link-white.svg") no-repeat;
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      left: -23px;
+      top: 6px;
+
+    }
+  }
+}
